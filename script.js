@@ -49,6 +49,7 @@ function addTask() {
     //事後処理
     document.getElementById("taskValue").value = "";
     id += 1;
+    switchDisplay();
 }
 
 function delTask(delId) {
@@ -81,4 +82,38 @@ function changeStatus(changeId) {
 	} else {
 		btn.setAttribute("value", "作業中");
 	}
+	//事後処理
+	switchDisplay();
 } 
+
+
+function switchDisplay() {
+	
+	let status = "";
+	
+	/* 選択された状態を取得する */
+	for (let i=0; i<document.tasks.chk.length; i++) {
+		if (document.tasks.chk[i].checked) {
+			status = document.tasks.chk[i].value;
+			break;
+		}
+	}
+	if (status === "") {
+		return false;
+	}
+	
+	
+	/* 選択された状態のタスクのみ表示する */
+	for (let i=2; i<table.childNodes.length; i++) {	
+		if (status === "すべて") {
+			table.childNodes[i].removeAttribute("style");
+		} else {	
+			
+			if (status === table.childNodes[i].childNodes[2].getAttribute("value")) { //選択された状態のタスクと一致するステータスの場合
+				table.childNodes[i].removeAttribute("style");
+			} else { //選択された状態のタスクと一致しないステータスの場合
+				table.childNodes[i].setAttribute("style", "display:none;");
+			}
+		}
+	}
+}
