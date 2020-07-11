@@ -117,3 +117,15 @@ function switchDisplay() {
 		}
 	}
 }
+
+document.getElementById("radioAll").onchange = function() {
+	switchDisplay();
+};
+
+document.getElementById("radioWorking").onchange = function() {
+	switchDisplay();
+};
+
+document.getElementById("radioEnd").onchange = function() {
+	switchDisplay();
+};
