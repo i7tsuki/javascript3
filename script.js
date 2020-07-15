@@ -87,7 +87,7 @@ function changeStatus(changeId) {
 } 
 
 
-function switchDisplay() {
+const switchDisplay = () => {
 	
 	let status = "";
 	
@@ -107,25 +107,22 @@ function switchDisplay() {
 	for (let i=2; i<table.childNodes.length; i++) {	
 		if (status === "すべて") {
 			table.childNodes[i].removeAttribute("style");
-		} else {	
-			
-			if (status === table.childNodes[i].childNodes[2].getAttribute("value")) { //選択された状態のタスクと一致するステータスの場合
-				table.childNodes[i].removeAttribute("style");
-			} else { //選択された状態のタスクと一致しないステータスの場合
-				table.childNodes[i].setAttribute("style", "display:none;");
-			}
+		} else if (status === table.childNodes[i].childNodes[2].getAttribute("value")) { //選択された状態のタスクと一致するステータスの場合
+			table.childNodes[i].removeAttribute("style");
+		} else { //選択された状態のタスクと一致しないステータスの場合
+			table.childNodes[i].setAttribute("style", "display:none;");
 		}
 	}
 }
 
-document.getElementById("radioAll").onchange = function() {
+document.getElementById("radioAll").addEventListener("change", function() {
 	switchDisplay();
-};
+});
 
-document.getElementById("radioWorking").onchange = function() {
+document.getElementById("radioWorking").addEventListener("change", function() {
 	switchDisplay();
-};
+});
 
-document.getElementById("radioEnd").onchange = function() {
+document.getElementById("radioEnd").addEventListener("change", function() {
 	switchDisplay();
-};
+});
