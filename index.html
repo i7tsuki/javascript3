@@ -1,13 +1,12 @@
 <html>
 <head>
-    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
     <h1>ToDoリスト</h1>
     <form name="tasks">
-        <input type="radio" value="すべて" name="chk" checked>すべて
-        <input type="radio" value="作業中" name="chk">作業中
-        <input type="radio" value="完了" name="chk">完了
+        <input type="radio" value="すべて" name="chk" id="radio-all" checked>すべて
+        <input type="radio" value="作業中" name="chk" id="radio-working">作業中
+        <input type="radio" value="完了" name="chk" id="radio-end">完了
         <table id="table">
             <tr>
                 <th>ID</th>
@@ -20,5 +19,6 @@
         <input type="text" id="taskValue" name="addTaskName">
         <input type="button" value="追加" onclick="addTask();">
     </form>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
